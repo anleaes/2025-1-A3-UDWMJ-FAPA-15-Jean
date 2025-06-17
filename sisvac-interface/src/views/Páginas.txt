@@ -1,0 +1,11 @@
+LoginPage:
+- Página para fazer o login com autenticação
+
+HomePage:
+- Página que mostrará quantas vacinas estão cadastradas e a listagem delas,
+bem como as característivcas
+
+VacinasPage:
+- Página que poderá adicionar novas vacinas ao db, com informações como
+Fornecedor e quantas doses tem.
+
