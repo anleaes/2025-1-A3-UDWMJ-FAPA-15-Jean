@@ -1,6 +1,6 @@
 <template>
   <!-- Estrutura da tela de login -->
-  <div class="login-container">
+  <div v-if="$route.name === 'Login'" class="login-container">
     <div class="login-box">
       <h1>Login SISVAC</h1>
       <input v-model="email" placeholder="Email" @keyup.enter="login" />
@@ -36,6 +36,14 @@ export default {
         this.erro = "Erro ao fazer login: " + err.message;
       }
     }
+  },
+  //remove o scroll da tela de login pra não ficar enchendo o saco
+  mounted() {
+    document.body.style.overflow = 'hidden';
+  },
+  //depois que o usuário faz login, retorna o scroll normal
+  unmounted() {
+    document.body.style.overflow = '';
   }
 };
 </script>
@@ -43,14 +51,17 @@ export default {
 <style scoped>
 /* Estilização da página */
 .login-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
   background-color: #f3f4f6;
+  box-sizing: border-box;
 }
 
 .login-box {
@@ -102,18 +113,5 @@ export default {
   color: red;
   text-align: center;
   font-size: 0.9rem;
-}
-
-/* Remove scroll na tela de login pra não ficar enchendo o saco*/
-:global(html), :global(body), :global(#app) {
-  height: 100vh;
-  min-height: 100vh;
-  max-height: 100vh;
-  width: 100vw;
-  min-width: 100vw;
-  max-width: 100vw;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
 }
 </style>

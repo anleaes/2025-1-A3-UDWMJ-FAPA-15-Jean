@@ -22,7 +22,7 @@ export default {
     async logout() {
       try {
         await signOut(auth); // Desloga o usuário do Firebase Authentication
-        localStorage.removeItem('token'); // Remove o token JWT do localStorage
+        localStorage.removeItem('token'); // Remove o token JWT
         this.isAuthenticated = false; // Atualiza o estado para esconder a navegação
         this.$router.push('/login'); // Redireciona o usuário para a página de login
         alert('Você foi desconectado.');
@@ -31,7 +31,7 @@ export default {
         alert('Erro ao fazer logout. Tente novamente.');
       }
     },
-    // Método para verificar o status de autenticação baseado no token no localStorage
+    // Método para verificar o status de autenticação baseado no token
     checkAuthStatus() {
       this.isAuthenticated = !!localStorage.getItem('token');
     }
@@ -57,12 +57,11 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0;
 }
 
 nav {
   padding: 30px;
-  background-color: #f2f2f2;
   border-bottom: 1px solid #ccc;
 }
 
