@@ -1,4 +1,5 @@
 <template>
+  <!-- Estrutura principal da aplicação -->
   <div id="app">
     <nav v-if="isAuthenticated">
       <router-link to="/home">Home</router-link> |
@@ -15,10 +16,11 @@ import { signOut } from 'firebase/auth'; // Importa a função signOut
 export default {
   data() {
     return {
-      isAuthenticated: false // Estado reativo para controlar a visibilidade da navegação
+      isAuthenticated: false // Controla se o usuário está logado
     };
   },
   methods: {
+    // Faz logout do usuário
     async logout() {
       try {
         await signOut(auth); // Desloga o usuário do Firebase Authentication
@@ -31,26 +33,26 @@ export default {
         alert('Erro ao fazer logout. Tente novamente.');
       }
     },
-    // Método para verificar o status de autenticação baseado no token
+    // Verifica se o usuário está autenticado
     checkAuthStatus() {
       this.isAuthenticated = !!localStorage.getItem('token');
     }
   },
   watch: {
-    // Observa mudanças na rota. Cada vez que a rota muda, verifica o status de autenticação.
+    // Observa mudanças de rota para atualizar autenticação
     $route() {
       this.checkAuthStatus();
     }
   },
-  created() {
+  mounted() {
     // Verifica o status de autenticação quando o App.vue é criado (ao carregar a aplicação)
     this.checkAuthStatus();
   }
-};
+}
 </script>
 
 <style>
-/* Estilos*/
+/* Estilos globais da aplicação */
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

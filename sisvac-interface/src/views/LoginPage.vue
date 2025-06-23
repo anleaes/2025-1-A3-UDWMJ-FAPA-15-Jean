@@ -1,5 +1,5 @@
 <template>
-  <!-- Estrutura da tela de login -->
+  <!-- Tela de login do sistema -->
   <div v-if="$route.name === 'Login'" class="login-container">
     <div class="login-box">
       <h1>Login SISVAC</h1>
@@ -25,7 +25,7 @@ export default {
     };
   },
   methods: {
-    // Realiza o login e redireciona
+    // Realiza login com Firebase e redireciona
     async login() {
       try {
         const userCredential = await signInWithEmailAndPassword(auth, this.email, this.senha);
@@ -49,7 +49,7 @@ export default {
 </script>
 
 <style scoped>
-/* Estilização da página */
+/* Estilos da tela de login */
 .login-container {
   position: fixed;
   top: 0;

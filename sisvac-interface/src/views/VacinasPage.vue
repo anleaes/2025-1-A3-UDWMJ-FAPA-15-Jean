@@ -1,7 +1,7 @@
 <template>
+  <!-- Página de gerenciamento de vacinas -->
   <div class="vacinas-container">
     <h1>Gerenciamento de Vacinas</h1>
-
     <div class="form-section">
       <h2>{{ editandoVacina ? 'Editar Vacina' : 'Adicionar Nova Vacina' }}</h2>
       <!-- Formulário de cadastro/edição de vacina -->
@@ -14,7 +14,6 @@
         <p v-if="formErro" class="error-message">{{ formErro }}</p>
       </form>
     </div>
-
     <div class="list-section">
       <h2>Lista de Vacinas</h2>
       <p v-if="loading">Carregando vacinas...</p>
@@ -50,6 +49,7 @@
 <script>
 export default {
   name: 'VacinasPage',
+  // Dados reativos da página
   data() {
     return {
       vacinas: [], // Lista de vacinas obtidas da API

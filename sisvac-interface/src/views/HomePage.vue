@@ -1,4 +1,5 @@
 <template>
+  <!-- Página inicial: mostra total e lista de vacinas -->
   <div class="home-container">
     <h1>Bem-vindo ao SISVAC</h1>
     <!-- Mostra o total de vacinas cadastradas -->
@@ -34,6 +35,7 @@
 import axios from 'axios'
 
 export default {
+  // Dados reativos da página
   data() {
     return {
       total: 0,       // Total de vacinas cadastradas
@@ -42,7 +44,7 @@ export default {
     }
   },
   methods: {
-    // Busca a lista de vacinas na API
+    // Busca vacinas na API e atualiza a lista
     async buscarVacinas() {
       this.loading = true;
       try {
@@ -58,7 +60,7 @@ export default {
       }
     }
   },
-  // Busca as vacinas automaticamente quando a página é carregada
+  // Busca vacinas ao carregar a página
   mounted() {
     this.buscarVacinas()
   }
@@ -66,6 +68,7 @@ export default {
 </script>
 
 <style scoped>
+/* Estilos da página inicial */
 .home-container {
   padding: 2rem;
   max-width: 800px;
