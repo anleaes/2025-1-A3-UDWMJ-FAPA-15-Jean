@@ -20,13 +20,27 @@
       <p v-if="loading">Carregando vacinas...</p>
       <p v-if="listErro" class="error-message">{{ listErro }}</p>
       <!-- Lista de vacinas -->
-      <ul v-if="vacinas.length">
-        <li v-for="vacina in vacinas" :key="vacina.id">
-          {{ vacina.nome }} ({{ vacina.fabricante }}) - {{ vacina.doses }} doses
-          <button @click="editarVacina(vacina)">Editar</button>
-          <button @click="excluirVacina(vacina.id)">Excluir</button>
-        </li>
-      </ul>
+      <table v-if="vacinas.length" class="tabela-vacinas">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Fabricante</th>
+            <th>Doses</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="vacina in vacinas" :key="vacina.id">
+            <td>{{ vacina.nome }}</td>
+            <td>{{ vacina.fabricante }}</td>
+            <td>{{ vacina.doses }}</td>
+            <td>
+              <button @click="editarVacina(vacina)">Editar</button>
+              <button @click="excluirVacina(vacina.id)">Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
       <p v-else-if="!loading">Nenhuma vacina cadastrada.</p>
       <button @click="carregarVacinas">Atualizar Lista</button>
     </div>
@@ -196,20 +210,26 @@ button:last-child {
   margin-right: 0;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+.tabela-vacinas {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
 }
 
-li {
-  background-color: #fff;
-  border: 1px solid #eee;
-  padding: 10px;
-  margin-bottom: 8px;
-  border-radius: 4px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.tabela-vacinas th,
+.tabela-vacinas td {
+  border: 1px solid #e5e7eb;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.tabela-vacinas th {
+  background-color: #f9fafb;
+  color: #374151;
+}
+
+.tabela-vacinas tr:nth-child(even) {
+  background-color: #f3f4f6;
 }
 
 .error-message {

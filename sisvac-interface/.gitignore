@@ -22,3 +22,6 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Firebase (para não dar problema para subir para o git)
+sisvac-api/firebase.json

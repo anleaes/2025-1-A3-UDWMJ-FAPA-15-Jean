@@ -46,8 +46,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100vh;
   height: 100vh;
-  overflow:hidden;
+  width: 100vw;
+  overflow: hidden;
   background-color: #f3f4f6;
 }
 
@@ -100,5 +102,18 @@ export default {
   color: red;
   text-align: center;
   font-size: 0.9rem;
+}
+
+/* Remove scroll na tela de login pra não ficar enchendo o saco*/
+:global(html), :global(body), :global(#app) {
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  width: 100vw;
+  min-width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 </style>
