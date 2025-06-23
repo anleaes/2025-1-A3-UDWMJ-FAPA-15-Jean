@@ -39,6 +39,7 @@ const verificarToken = async (req, res, next) => {
     req.user = decodedToken; // Adiciona o usuário decodificado na requisição
     next();
   } catch (error) {
+    console.error('Erro ao verificar token:', error);
     return res.status(403).send('Não autorizado: Token inválido ou expirado.');
   }
 };
@@ -147,3 +148,4 @@ app.delete('/vacinas/:id', verificarToken, async (req, res) => {
 
 // Inicia o servidor na porta definida
 app.listen(port, () => console.log(`API SISVAC rodando na porta ${port}`));
+
